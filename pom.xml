@@ -7,7 +7,7 @@
 	<version>1.0.0</version>
 	<packaging>maven-plugin</packaging>
 	<name>compressor-maven-plugin</name>
-	<description>A static resource and compression plugin</description>
+	<description>A web static file compression maven plugin</description>
 	<url>https://github.com/jsonshen/compressor-maven-plugin</url>
 
 	<properties>
