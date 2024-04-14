@@ -52,7 +52,27 @@ public class PrecompressMojo extends AbstractMojo {
     @Parameter(defaultValue = "2", readonly = true, required = true)
     private long minResponseSize;
 
-    public void execute() throws MojoExecutionException, MojoFailureException {
+    public void setInputDirectory(File inputDirectory) {
+		this.inputDirectory = inputDirectory;
+	}
+
+	public void setOutputDirectory(File outputDirectory) {
+		this.outputDirectory = outputDirectory;
+	}
+
+	public void setIncludeSuffixes(String[] includeSuffixes) {
+		this.includeSuffixes = includeSuffixes;
+	}
+
+	public void setAlgorithms(Algorithm[] algorithms) {
+		this.algorithms = algorithms;
+	}
+
+	public void setMinResponseSize(long minResponseSize) {
+		this.minResponseSize = minResponseSize;
+	}
+
+	public void execute() throws MojoExecutionException, MojoFailureException {
         for (Algorithm alg : algorithms) {
             if (alg == Algorithm.BROTLI) {
                 Brotli4jLoader.ensureAvailability();
