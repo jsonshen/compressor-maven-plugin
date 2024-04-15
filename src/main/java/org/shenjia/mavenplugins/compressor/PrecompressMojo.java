@@ -37,40 +37,20 @@ import com.aayushatharva.brotli4j.encoder.BrotliOutputStream;
 @Mojo(name = "precompress", defaultPhase = LifecyclePhase.PREPARE_PACKAGE)
 public class PrecompressMojo extends AbstractMojo {
 
-    @Parameter(defaultValue = "${project.build.outputDirectory}/classes", readonly = true, required = true)
+    @Parameter(defaultValue = "${project.build.outputDirectory}/classes", required = true)
     private File inputDirectory;
 
-    @Parameter(defaultValue = "${project.build.outputDirectory}/classes", readonly = true, required = true)
+    @Parameter(defaultValue = "${project.build.outputDirectory}/classes", required = true)
     private File outputDirectory;
 
-    @Parameter(defaultValue = ".css,.js,.svg,.txt,.md,.html,.xml,.json", readonly = true, required = true)
+    @Parameter(defaultValue = ".css,.js,.svg,.txt,.md,.html,.xml,.json", required = true)
     private String[] includeSuffixes;
 
-    @Parameter(defaultValue = "GZIP,BROTLI", readonly = true, required = true)
+    @Parameter(defaultValue = "GZIP,BROTLI", required = true)
     private Algorithm[] algorithms;
 
-    @Parameter(defaultValue = "2", readonly = true, required = true)
+    @Parameter(defaultValue = "2", required = true)
     private long minResponseSize;
-
-    public void setInputDirectory(File inputDirectory) {
-		this.inputDirectory = inputDirectory;
-	}
-
-	public void setOutputDirectory(File outputDirectory) {
-		this.outputDirectory = outputDirectory;
-	}
-
-	public void setIncludeSuffixes(String[] includeSuffixes) {
-		this.includeSuffixes = includeSuffixes;
-	}
-
-	public void setAlgorithms(Algorithm[] algorithms) {
-		this.algorithms = algorithms;
-	}
-
-	public void setMinResponseSize(long minResponseSize) {
-		this.minResponseSize = minResponseSize;
-	}
 
 	public void execute() throws MojoExecutionException, MojoFailureException {
         for (Algorithm alg : algorithms) {
